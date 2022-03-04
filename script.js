@@ -3,7 +3,7 @@ const date = new Date()
 
 /* GET DAY OF THE WEEK */
 const dayOfWeek = date.getDay()
-console.log(dayOfWeek)
+console.log(dayOfWeek + ' day of the week')
 
 // CHECK IF ITS SUNDAY
 function checkForSunday(date) {
@@ -28,7 +28,7 @@ date.setMinutes(date.getMinutes() + newYork_offset)
 
 // This gets the time in EST
 let hour = date.getHours();
-console.log(hour);
+console.log(hour + ' hour');
 
 function checkTimeOfDay(time) {
   if (time >= 9 && time <= 12) {
