@@ -1,33 +1,40 @@
 /* CREATE NEW DATE OBJECT TO FIND WHAT DAY OF THE WEEK IT IS */
 const date = new Date()
+
 /* GET DAY OF THE WEEK */
 const dayOfWeek = date.getDay()
-
 console.log(dayOfWeek)
 
 // CHECK IF ITS SUNDAY
 function checkForSunday(date) {
   if (date === 6) {
     console.log('Its Sunday')
+    
   } else {
     console.log('Its not Sunday')
   }
 }
 checkForSunday(dayOfWeek)
+const utc_offset = date.getTimezoneOffset()
 
-// UTC-5 is NEW YORK TIME ZONE
-const newYork = new Date().toLocaleString('en-US', {
-  timeZone: 'America/New_York',
-})
-const hours = (date.getHours() + 1)
-console.log(hours)
+date.setMinutes(date.getMinutes() + utc_offset)
 
-function checkHours (time) {
-    // checking for 9am-12pm
-    if ( hours >= 9 || hours <= 12 ) {
-        console.log('need to switch URL');
-    } else {
-        console.log('do not need to switch URL');
-    }
+// Convert Timezone
+// ET -5 UTC
+
+// Offsetting timezone from UTC
+let newYork_offset = -5 * 60
+date.setMinutes(date.getMinutes() + newYork_offset)
+
+// This gets the time in EST
+let hour = date.getHours();
+console.log(hour);
+
+function checkTimeOfDay(time) {
+  if (time >= 9 && time <= 12) {
+    console.log(' It"s Live Stream Time ');
+  } else {
+    console.log('Not livestream time');
+  }
 }
-checkHours(hours)
+checkTimeOfDay(hour)
